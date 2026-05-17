@@ -41,6 +41,9 @@ public class Student extends User implements Serializable {
     }
 
     public void registerCourse(Course course) throws CreditLimitException {
+        if (!university.patterns.Database.getInstance().getCourses().contains(course))
+            throw new IllegalArgumentException(
+                "Course does not exist in the system: " + course.getName());
         if (credits + course.getCredits() > MAX_CREDITS) {
             throw new CreditLimitException(credits, course.getCredits());
         }
