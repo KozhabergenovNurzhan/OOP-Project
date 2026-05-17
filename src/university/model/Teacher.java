@@ -55,6 +55,12 @@ public class Teacher extends Employee implements Researcher, Serializable {
     }
 
     public void putMark(Student student, Course course, Mark mark) throws FailLimitException {
+        if (!courses.contains(course))
+            throw new IllegalArgumentException(
+                "Teacher " + getLogin() + " is not assigned to course: " + course.getName());
+        if (!course.getEnrolledStudents().contains(student))
+            throw new IllegalArgumentException(
+                "Student " + student.getLogin() + " is not enrolled in: " + course.getName());
         student.recordMark(course, mark);
         System.out.println("Mark recorded for " + student.getLogin() + " in " + course.getName());
     }
