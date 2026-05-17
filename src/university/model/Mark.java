@@ -42,11 +42,27 @@ public class Mark implements Serializable {
 
     // Getters & Setters
     public double getAttestation1()          { return attestation1; }
-    public void setAttestation1(double v)    { this.attestation1 = v; }
+    public void setAttestation1(double v) {
+        if (v < 0 || v > 60)
+            throw new IllegalArgumentException("Attestation 1 must be between 0 and 60");
+        if (v + this.attestation2 > 60)
+            throw new IllegalArgumentException("Sum of ATT1 and ATT2 cannot exceed 60");
+        this.attestation1 = v;
+    }
     public double getAttestation2()          { return attestation2; }
-    public void setAttestation2(double v)    { this.attestation2 = v; }
+    public void setAttestation2(double v) {
+        if (v < 0 || v > 60)
+            throw new IllegalArgumentException("Attestation 2 must be between 0 and 60");
+        if (this.attestation1 + v > 60)
+            throw new IllegalArgumentException("Sum of ATT1 and ATT2 cannot exceed 60");
+        this.attestation2 = v;
+    }
     public double getFinalExam()             { return finalExam; }
-    public void setFinalExam(double v)       { this.finalExam = v; }
+    public void setFinalExam(double v) {
+        if (v < 0 || v > 40)
+            throw new IllegalArgumentException("Final exam must be between 0 and 40");
+        this.finalExam = v;
+    }
     public Student getStudent()              { return student; }
     public Course getCourse()                { return course; }
 
