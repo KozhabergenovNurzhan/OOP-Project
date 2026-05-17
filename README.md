@@ -9,14 +9,12 @@ This system simulates a real university intranet where students, teachers, manag
 ## Project Structure
 
 ```
-src/
-├── university/
-│   ├── model/          # Core classes: User, Student, Teacher, Manager, Admin, Course, Mark...
-│   │   └── research/   # Researcher, ResearchPaper, ResearchProject, ResearcherDecorator
-│   ├── patterns/       # Database (Singleton), NotificationService (Observer), UserFactory (Factory)
-│   ├── exceptions/     # Custom exceptions
-│   └── enums/          # Enumerations
-docs/                   # Generated Javadoc documentation
+src/university/
+├── model/          → User, Student, Teacher, Manager, Admin, Course, Mark, Lesson
+│   └── research/   → Researcher, ResearchPaper, ResearchProject, ResearcherDecorator
+├── patterns/       → Database, NotificationService, UserFactory
+├── exceptions/     → CreditLimitException, FailLimitException, LowHIndexException
+└── enums/          → Department, TeacherTitle, ManagerType, LessonType, ProjectStatus
 ```
 
 ## Features
